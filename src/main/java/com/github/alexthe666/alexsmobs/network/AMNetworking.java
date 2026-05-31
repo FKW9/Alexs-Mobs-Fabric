@@ -1,6 +1,5 @@
 package com.github.alexthe666.alexsmobs.network;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
@@ -47,25 +46,5 @@ public final class AMNetworking {
         ServerPlayNetworking.registerGlobalReceiver(MessageMosquitoDismount.ID, MessageMosquitoDismount::handleServer);
         ServerPlayNetworking.registerGlobalReceiver(MessageHurtMultipart.ID, MessageHurtMultipart::handleServer);
         ServerPlayNetworking.registerGlobalReceiver(MessageInteractMultipart.ID, MessageInteractMultipart::handleServer);
-    }
-
-    public static void registerClientReceivers() {
-        ClientPlayNetworking.registerGlobalReceiver(MessageSyncEntityPos.ID, MessageSyncEntityPos::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageStartDancing.ID, MessageStartDancing::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageTarantulaHawkSting.ID, MessageTarantulaHawkSting::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageMosquitoMountPlayer.ID, MessageMosquitoMountPlayer::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageCrowMountPlayer.ID, MessageCrowMountPlayer::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageCrowDismount.ID, MessageCrowDismount::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageMungusBiomeChange.ID, MessageMungusBiomeChange::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageUpdateCapsid.ID, MessageUpdateCapsid::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageKangarooInventorySync.ID, MessageKangarooInventorySync::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageKangarooEat.ID, MessageKangarooEat::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageSendVisualFlagFromServer.ID, MessageSendVisualFlagFromServer::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageSetPupfishChunkOnClient.ID, MessageSetPupfishChunkOnClient::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageUpdateTransmutablesToDisplay.ID, MessageUpdateTransmutablesToDisplay::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageSyncEntityData.ID, MessageSyncEntityData::handleClient);
-        ClientPlayNetworking.registerGlobalReceiver(MessageMosquitoDismount.ID, MessageMosquitoDismount::handle);
-        ClientPlayNetworking.registerGlobalReceiver(MessageHurtMultipart.ID, MessageHurtMultipart::handle);
-        ClientPlayNetworking.registerGlobalReceiver(MessageInteractMultipart.ID, MessageInteractMultipart::handle);
     }
 }

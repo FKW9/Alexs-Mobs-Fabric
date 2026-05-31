@@ -105,7 +105,7 @@ public class ClientProxy extends CommonProxy {
         ClientPlayNetworking.send(message);
     }
 
-    
+
     @Override
     public void init() {
     }
@@ -565,7 +565,7 @@ public class ClientProxy extends CommonProxy {
 
     }
 
-    
+
     @Override
     public Object getISTERProperties() {
         return new AMItemRenderProperties();
