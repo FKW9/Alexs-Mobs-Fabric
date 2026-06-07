@@ -1,5 +1,6 @@
 package com.github.alexthe666.alexsmobs;
 
+import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
 import com.github.alexthe666.alexsmobs.config.AMConfig;
 import com.github.alexthe666.alexsmobs.config.BiomeConfig;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
@@ -47,6 +48,7 @@ public class AlexsMobs implements ModInitializer {
         AMDataComponents.init();
         AMAdvancementTriggerRegistry.init();
         AMPointOfInterestRegistry.init();
+        AMParticleRegistry.init();
         AMSoundRegistry.init();
         AMFeatureRegistry.init();
 

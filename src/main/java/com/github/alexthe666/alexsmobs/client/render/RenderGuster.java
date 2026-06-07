@@ -5,6 +5,7 @@ import com.github.alexthe666.alexsmobs.client.model.ModelGuster;
 import com.github.alexthe666.alexsmobs.entity.EntityGuster;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import com.github.alexthe666.alexsmobs.client.model.AlexAdvancedEntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -12,7 +13,6 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
@@ -71,8 +71,11 @@ public class RenderGuster extends MobRenderer<EntityGuster, LivingEntityRenderSt
             this.getParentModel().setupAnim(state);
             RenderType eyeType = entitylivingbaseIn.getVariant() == 2 ? AMRenderTypes.getEyesNoCull(TEXTURE_SOUL_EYES) : AMRenderTypes.getEyesNoCull(TEXTURE_EYES);
             int overlay = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
+            PoseStack citadelPoseStack = new PoseStack();
             collector.submitCustomGeometry(matrixStackIn, eyeType, (pose, ivertexbuilder) ->
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, ivertexbuilder, 15728640, overlay, -1)
+                    AlexAdvancedEntityModel.withCitadelSubmitPose(pose, citadelPoseStack, scratch ->
+                            this.getParentModel().renderCitadelToBuffer(scratch, ivertexbuilder, 15728640, overlay, -1)
+                    )
             );
         }
     }

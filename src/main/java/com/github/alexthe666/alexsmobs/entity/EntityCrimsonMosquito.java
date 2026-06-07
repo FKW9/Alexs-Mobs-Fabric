@@ -158,7 +158,14 @@ public class EntityCrimsonMosquito extends Monster {
     public boolean canRiderInteract() {
         return true;
     }
-
+    @Override
+    public boolean isPickable() {
+        return true;
+    }
+    @Override
+    public float getPickRadius() {
+        return this.isPassenger() ? 0.75F : super.getPickRadius();
+    }
     protected void registerGoals() {
         this.goalSelector.addGoal(2, new FlyTowardsTarget(this));
         this.goalSelector.addGoal(2, new FlyAwayFromTarget(this));
@@ -252,11 +259,12 @@ public class EntityCrimsonMosquito extends Monster {
                     this.setYRot(livingEntity.getYRot());
                     this.yHeadRot = livingEntity.yHeadRot;
                     this.yRotO = livingEntity.yHeadRot;
-                    final float radius = 1F;
+                    final float radius = 1.15F;
                     final float angle = (Maths.STARTING_ANGLE * livingEntity.yBodyRot);
                     final double extraX = radius * Mth.sin(Mth.PI + angle);
                     final double extraZ = radius * Mth.cos(angle);
-                    this.setPos(mount.getX() + extraX, Math.max(mount.getY() + mount.getEyeHeight() * 0.25F, mount.getY()), mount.getZ() + extraZ);
+                    final double attachY = mount.getY() + Math.max(0.65F, mount.getEyeHeight() * 0.45F);
+                    this.setPos(mount.getX() + extraX, attachY, mount.getZ() + extraZ);
                     if (!mount.isAlive() || mount instanceof Player && ((Player) mount).isCreative()) {
                         this.removeVehicle();
                     }

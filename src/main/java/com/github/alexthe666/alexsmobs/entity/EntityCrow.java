@@ -295,7 +295,9 @@ public class EntityCrow extends TamableAnimal implements ITargetsDroppedItems {
         final ItemStack itemstack = player.getItemInHand(hand);
         final InteractionResult type = super.mobInteract(player, hand);
         if (!this.getMainHandItem().isEmpty() && type != InteractionResult.SUCCESS) {
-            this.spawnAtLocation((ServerLevel) this.level(), this.getMainHandItem().copy());
+            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+                this.spawnAtLocation(serverLevel, this.getMainHandItem().copy());
+            }
             this.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
             return InteractionResult.SUCCESS;
         } else {

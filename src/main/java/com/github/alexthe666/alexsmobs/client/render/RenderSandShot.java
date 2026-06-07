@@ -54,7 +54,13 @@ public class RenderSandShot extends EntityRenderer<EntitySandShot, LlamaSpitRend
         this.model.setupAnim(state);
         int packedLightIn = state.lightCoords;
         collector.submitCustomGeometry(matrixStackIn, this.model.renderType(SAND_SHOT), (pose, ivertexbuilder) ->
-            this.model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, -1)
+                {
+                    PoseStack stackPose = new PoseStack();
+                    stackPose.pushPose();
+                    stackPose.last().set(pose);
+                    this.model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, -1);
+                    stackPose.popPose();
+                }
         );
         matrixStackIn.popPose();
         super.submit(state, matrixStackIn, collector, cameraState);
