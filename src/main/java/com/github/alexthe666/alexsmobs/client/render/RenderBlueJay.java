@@ -83,7 +83,7 @@ public class RenderBlueJay extends MobRenderer<EntityBlueJay, LivingEntityRender
                 PoseStack stackPose = new PoseStack();
                 stackPose.pushPose();
                 stackPose.last().set(pose);
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, consumer, packedLightIn, overlay, AMColorUtil.packColor(1.0F, 1.0F, 1.0F, alpha));
+                this.getParentModel().renderCitadelToBuffer(stackPose, consumer, packedLightIn, overlay, AMColorUtil.packColor(1.0F, 1.0F, 1.0F, alpha));
                 stackPose.popPose();
             });
         }

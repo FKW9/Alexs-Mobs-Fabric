@@ -1,15 +1,19 @@
 package com.github.alexthe666.alexsmobs;
 
+import com.github.alexthe666.alexsmobs.block.AMBlockRegistry;
 import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
 import com.github.alexthe666.alexsmobs.config.AMConfig;
 import com.github.alexthe666.alexsmobs.config.BiomeConfig;
+import com.github.alexthe666.alexsmobs.tileentity.AMTileEntityRegistry;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
+import com.github.alexthe666.alexsmobs.inventory.AMMenuRegistry;
 import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
 import com.github.alexthe666.alexsmobs.item.AMDataComponents;
 import com.github.alexthe666.alexsmobs.misc.AMCreativeTabRegistry;
 import com.github.alexthe666.alexsmobs.misc.AMAdvancementTriggerRegistry;
 import com.github.alexthe666.alexsmobs.misc.AMPointOfInterestRegistry;
+import com.github.alexthe666.alexsmobs.misc.AMRecipeRegistry;
 import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
 import com.github.alexthe666.alexsmobs.network.AMNetworking;
 import com.github.alexthe666.alexsmobs.event.ServerEvents;
@@ -25,6 +29,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.LogManager;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Calendar;
@@ -41,6 +46,13 @@ public class AlexsMobs implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
+        AMBlockRegistry.bootstrap();
+        AMMenuRegistry.init();
+        AMRecipeRegistry.init();
+        AMEffectRegistry.init();
+        AMCreativeTabRegistry.init();
+        AMWorldRegistry.init();
         AMNetworking.registerPayloadTypes();
         AMNetworking.registerServerReceivers();
         AMConfig.bake();
@@ -50,6 +62,7 @@ public class AlexsMobs implements ModInitializer {
         AMPointOfInterestRegistry.init();
         AMParticleRegistry.init();
         AMSoundRegistry.init();
+        AMTileEntityRegistry.init();
         AMFeatureRegistry.init();
 
         AMEntityRegistry.registerSpawnPlacements();
@@ -71,6 +84,9 @@ public class AlexsMobs implements ModInitializer {
         });
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) ->
                 ServerEvents.onPlayerLoggedIn(handler.getPlayer()));
+
+        UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) ->
+                ServerEvents.onInteractWithEntity(player, entity, world, player.getItemInHand(hand)));
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());

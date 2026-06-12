@@ -60,7 +60,7 @@ public class RenderCrocodile extends MobRenderer<EntityCrocodile, LivingEntityRe
                         PoseStack stackPose = new PoseStack();
                         stackPose.pushPose();
                         stackPose.last().set(pose);
-                        this.getParentModel().renderCitadelToBuffer(matrixStackIn, shoeBuffer, packedLightIn, OverlayTexture.NO_OVERLAY, -1);
+                        this.getParentModel().renderCitadelToBuffer(stackPose, shoeBuffer, packedLightIn, OverlayTexture.NO_OVERLAY, -1);
                         stackPose.popPose();
                     }
             );

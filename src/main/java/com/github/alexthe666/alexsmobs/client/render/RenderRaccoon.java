@@ -92,7 +92,7 @@ public class RenderRaccoon extends MobRenderer<EntityRaccoon, LivingEntityRender
                             PoseStack stackPose = new PoseStack();
                             stackPose.pushPose();
                             stackPose.last().set(pose);
-                            this.getParentModel().renderCitadelToBuffer(p_225628_1_, buffer, p_225628_3_, OverlayTexture.NO_OVERLAY, packedColor);
+                            this.getParentModel().renderCitadelToBuffer(stackPose, buffer, p_225628_3_, OverlayTexture.NO_OVERLAY, packedColor);
                             stackPose.popPose();
                         }
                 );

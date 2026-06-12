@@ -62,7 +62,7 @@ public class RenderFrilledShark extends MobRenderer<EntityFrilledShark, LivingEn
                 PoseStack stackPose = new PoseStack();
                 stackPose.pushPose();
                 stackPose.last().set(pose);
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, consumer, 240, overlay, -1);
+                this.getParentModel().renderCitadelToBuffer(stackPose, consumer, 240, overlay, -1);
                 stackPose.popPose();
             });
         }

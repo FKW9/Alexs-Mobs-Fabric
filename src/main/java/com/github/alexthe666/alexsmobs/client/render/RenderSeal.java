@@ -109,7 +109,7 @@ public class RenderSeal extends MobRenderer<EntitySeal, LivingEntityRenderState,
                         PoseStack stackPose = new PoseStack();
                         stackPose.pushPose();
                         stackPose.last().set(pose);
-                        this.getParentModel().renderCitadelToBuffer(matrixStackIn, lead, packedLightIn, overlay, -1);
+                        this.getParentModel().renderCitadelToBuffer(stackPose, lead, packedLightIn, overlay, -1);
                         stackPose.popPose();
                     }
             );

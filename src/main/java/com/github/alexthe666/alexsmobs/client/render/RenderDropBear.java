@@ -55,7 +55,7 @@ public class RenderDropBear extends MobRenderer<EntityDropBear, LivingEntityRend
                         PoseStack stackPose = new PoseStack();
                         stackPose.pushPose();
                         stackPose.last().set(pose);
-                        this.getParentModel().renderCitadelToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, overlay, -1);
+                        this.getParentModel().renderCitadelToBuffer(stackPose, ivertexbuilder, packedLightIn, overlay, -1);
                         stackPose.popPose();
                     }
             );

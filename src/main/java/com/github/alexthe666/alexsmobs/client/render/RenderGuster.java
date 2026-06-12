@@ -71,12 +71,13 @@ public class RenderGuster extends MobRenderer<EntityGuster, LivingEntityRenderSt
             this.getParentModel().setupAnim(state);
             RenderType eyeType = entitylivingbaseIn.getVariant() == 2 ? AMRenderTypes.getEyesNoCull(TEXTURE_SOUL_EYES) : AMRenderTypes.getEyesNoCull(TEXTURE_EYES);
             int overlay = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-            PoseStack citadelPoseStack = new PoseStack();
-            collector.submitCustomGeometry(matrixStackIn, eyeType, (pose, ivertexbuilder) ->
-                    AlexAdvancedEntityModel.withCitadelSubmitPose(pose, citadelPoseStack, scratch ->
-                            this.getParentModel().renderCitadelToBuffer(scratch, ivertexbuilder, 15728640, overlay, -1)
-                    )
-            );
+            collector.submitCustomGeometry(matrixStackIn, eyeType, (pose, ivertexbuilder) -> {
+                PoseStack stackPose = new PoseStack();
+                stackPose.pushPose();
+                stackPose.last().set(pose);
+                this.getParentModel().renderCitadelToBuffer(stackPose, ivertexbuilder, 15728640, overlay, -1);
+                stackPose.popPose();
+            });
         }
     }
 }

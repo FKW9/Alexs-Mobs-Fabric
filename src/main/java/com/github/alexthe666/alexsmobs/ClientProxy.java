@@ -537,7 +537,7 @@ public class ClientProxy extends CommonProxy {
         registry.register(AMParticleRegistry.BEAR_FREDDY, new ParticleBearFreddy.Factory());
         registry.register(AMParticleRegistry.SUNBIRD_FEATHER, ParticleSunbirdFeather.Factory::new);
         registry.register(AMParticleRegistry.STATIC_SPARK, new ParticleStaticSpark.Factory());
-        registry.register(AMParticleRegistry.SKULK_BOOM, new ParticleSkulkBoom.Factory());
+        registry.register(AMParticleRegistry.SKULK_BOOM, ParticleSkulkBoom.Factory::new);
         registry.register(AMParticleRegistry.BIRD_SONG, ParticleBirdSong.Factory::new);
     }
 

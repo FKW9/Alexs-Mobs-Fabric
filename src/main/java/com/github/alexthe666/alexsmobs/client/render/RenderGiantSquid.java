@@ -86,7 +86,7 @@ public class RenderGiantSquid extends MobRenderer<EntityGiantSquid, LivingEntity
                 PoseStack stackPose = new PoseStack();
                 stackPose.pushPose();
                 stackPose.last().set(pose);
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, consumer, packedLightIn, overlay, AMColorUtil.packColor(1.0F, 1.0F, 1.0F, alpha));
+                this.getParentModel().renderCitadelToBuffer(stackPose, consumer, packedLightIn, overlay, AMColorUtil.packColor(1.0F, 1.0F, 1.0F, alpha));
                 stackPose.popPose();
             });
         }

@@ -74,7 +74,7 @@ public class RenderGrizzlyBear extends MobRenderer<EntityGrizzlyBear, LivingEnti
                 PoseStack stackPose = new PoseStack();
                 stackPose.pushPose();
                 stackPose.last().set(pose);
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, consumer, packedLightIn, overlay, -1);
+                this.getParentModel().renderCitadelToBuffer(stackPose, consumer, packedLightIn, overlay, -1);
                 stackPose.popPose();
             });
         }
@@ -100,7 +100,7 @@ public class RenderGrizzlyBear extends MobRenderer<EntityGrizzlyBear, LivingEnti
                 PoseStack stackPose = new PoseStack();
                 stackPose.pushPose();
                 stackPose.last().set(pose);
-                this.getParentModel().renderCitadelToBuffer(matrixStackIn, consumer, packedLightIn, overlay, packedColor);
+                this.getParentModel().renderCitadelToBuffer(stackPose, consumer, packedLightIn, overlay, packedColor);
                 stackPose.popPose();
             });
         }

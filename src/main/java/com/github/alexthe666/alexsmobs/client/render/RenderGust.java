@@ -52,7 +52,7 @@ public class RenderGust extends EntityRenderer<EntityGust, EntityRenderState> {
                     PoseStack stackPose = new PoseStack();
                     stackPose.pushPose();
                     stackPose.last().set(pose);
-                    this.model.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, -1);
+                    this.model.renderToBuffer(stackPose, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, -1);
                     stackPose.popPose();
                 }
         );

@@ -81,7 +81,7 @@ public class RenderToucan extends MobRenderer<EntityToucan, LivingEntityRenderSt
                     {                    PoseStack stackPose = new PoseStack();
                         stackPose.pushPose();
                         stackPose.last().set(pose);
-                        this.getParentModel().renderCitadelToBuffer(matrixStackIn, baseVc, packedLightIn, overlay, -1);
+                        this.getParentModel().renderCitadelToBuffer(stackPose, baseVc, packedLightIn, overlay, -1);
                         stackPose.popPose();
                     }
             );
@@ -89,7 +89,7 @@ public class RenderToucan extends MobRenderer<EntityToucan, LivingEntityRenderSt
                     {                    PoseStack stackPose = new PoseStack();
                         stackPose.pushPose();
                         stackPose.last().set(pose);
-                        this.getParentModel().renderCitadelToBuffer(matrixStackIn, glintVc, packedLightIn, overlay, -1);
+                        this.getParentModel().renderCitadelToBuffer(stackPose, glintVc, packedLightIn, overlay, -1);
                         stackPose.popPose();
                     }
             );
